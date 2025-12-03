@@ -1,1 +1,283 @@
-h
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToonStore - Animated E-Commerce</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka for Headings, Nunito for Body -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'toon-yellow': '#FFD93D',
+                        'toon-blue': '#4D96FF',
+                        'toon-red': '#FF6B6B',
+                        'toon-green': '#6BCB77',
+                        'toon-dark': '#2C3E50',
+                    },
+                    fontFamily: {
+                        heading: ['Fredoka', 'sans-serif'],
+                        body: ['Nunito', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neo': '5px 5px 0px 0px #000',
+                        'neo-hover': '2px 2px 0px 0px #000',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Nunito', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Fredoka', sans-serif; }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-delay { animation: float 7s ease-in-out infinite 1s; }
+
+        /* Loader Animation */
+        #loader {
+            transition: opacity 0.5s ease-out;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #fff; }
+        ::-webkit-scrollbar-thumb { background: #4D96FF; border: 3px solid #000; border-radius: 10px; }
+
+        /* Tilt Effect Class */
+        .tilt-card { transition: transform 0.2s; }
+        .tilt-card:hover { transform: rotate(-2deg) scale(1.02); }
+    </style>
+</head>
+<body class="bg-yellow-50 text-toon-dark selection:bg-toon-red selection:text-white">
+
+    <!-- 🎬 ANIMATED INTRO SCREEN -->
+    <div id="loader" class="fixed inset-0 z-50 bg-toon-blue flex flex-col items-center justify-center border-b-8 border-black">
+        <div class="text-6xl animate-bounce mb-4">👾</div>
+        <h1 class="text-5xl font-heading font-bold text-white drop-shadow-[4px_4px_0_#000]">TOONSTORE</h1>
+        <p class="text-white font-bold mt-2">Loading Awesomeness...</p>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-40 top-0 px-6 py-4">
+        <div class="max-w-7xl mx-auto bg-white border-4 border-black shadow-neo rounded-full px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-3xl">👾</span>
+                <span class="font-heading font-bold text-2xl tracking-wide">TOONSTORE</span>
+            </div>
+            
+            <div class="hidden md:flex gap-8 font-bold text-lg">
+                <a href="#" class="hover:text-toon-blue hover:underline decoration-4 decoration-toon-blue underline-offset-4 transition">Home</a>
+                <a href="#" class="hover:text-toon-red hover:underline decoration-4 decoration-toon-red underline-offset-4 transition">Shop</a>
+                <a href="#" class="hover:text-toon-green hover:underline decoration-4 decoration-toon-green underline-offset-4 transition">New</a>
+            </div>
+
+            <div class="flex gap-3">
+                <button class="w-10 h-10 bg-toon-yellow border-2 border-black rounded-full hover:bg-white transition flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-search"></i>
+                </button>
+                <button class="w-10 h-10 bg-toon-red text-white border-2 border-black rounded-full hover:bg-white hover:text-toon-red transition flex items-center justify-center font-bold relative">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="absolute -top-2 -right-2 bg-black text-white text-xs w-5 h-5 rounded-full flex items-center justify-center border border-white">3</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🏠 HERO SECTION -->
+    <section class="min-h-screen pt-32 pb-20 px-6 flex items-center relative overflow-hidden bg-gradient-to-b from-yellow-50 to-blue-50">
+        <!-- Floating Background Shapes -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-toon-red rounded-full border-4 border-black opacity-20 animate-float"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-toon-yellow rounded-full border-4 border-black opacity-20 animate-float-delay"></div>
+        <div class="absolute top-40 right-1/4 text-8xl opacity-10 rotate-12">🍩</div>
+
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <!-- Text Content -->
+            <div class="space-y-6">
+                <span class="inline-block bg-toon-green text-white px-4 py-1 rounded-full border-2 border-black font-bold shadow-neo transform -rotate-2">
+                    🚀 New Collection Dropped!
+                </span>
+                <h1 class="text-6xl md:text-7xl font-heading font-bold leading-tight">
+                    Style That <br>
+                    <span class="text-toon-blue drop-shadow-[4px_4px_0_#000]">Pops!</span>
+                </h1>
+                <p class="text-xl font-body font-bold text-gray-600 max-w-md">
+                    Premium gear for cartoon characters and cool humans. Shop the latest trends in the multiverse.
+                </p>
+                <div class="flex gap-4 pt-4">
+                    <button class="bg-toon-red text-white px-8 py-4 rounded-xl border-4 border-black font-bold text-xl shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-hover transition">
+                        Shop Now
+                    </button>
+                    <button class="bg-white text-black px-8 py-4 rounded-xl border-4 border-black font-bold text-xl shadow-neo hover:bg-gray-100 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-hover transition">
+                        View Lookbook
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hero Image/Mascot -->
+            <div class="relative animate-float">
+                <div class="relative z-10 bg-white border-4 border-black rounded-3xl p-4 shadow-neo transform rotate-2">
+                    <img src="https://placehold.co/600x600/FFD93D/black?text=Cool+Mascot+Here" alt="Mascot" class="rounded-2xl w-full border-2 border-black">
+                    <div class="absolute -bottom-6 -left-6 bg-white border-4 border-black px-6 py-3 rounded-xl shadow-neo transform -rotate-6">
+                        <span class="font-bold text-2xl">🔥 Trending!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📂 CATEGORY SECTION -->
+    <section class="py-20 px-6 bg-white border-y-4 border-black">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-heading font-bold text-center mb-16">
+                <span class="border-b-8 border-toon-yellow inline-block h-14">Shop By Category</span>
+            </h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Cat 1 -->
+                <div class="tilt-card cursor-pointer group">
+                    <div class="bg-toon-blue h-48 rounded-2xl border-4 border-black shadow-neo flex items-center justify-center overflow-hidden relative">
+                        <i class="fa-solid fa-shirt text-6xl text-white opacity-80 group-hover:scale-110 transition duration-300"></i>
+                    </div>
+                    <h3 class="text-center font-bold text-xl mt-4">Apparel</h3>
+                </div>
+                <!-- Cat 2 -->
+                <div class="tilt-card cursor-pointer group">
+                    <div class="bg-toon-red h-48 rounded-2xl border-4 border-black shadow-neo flex items-center justify-center overflow-hidden relative">
+                        <i class="fa-solid fa-shoe-prints text-6xl text-white opacity-80 group-hover:scale-110 transition duration-300"></i>
+                    </div>
+                    <h3 class="text-center font-bold text-xl mt-4">Kicks</h3>
+                </div>
+                <!-- Cat 3 -->
+                <div class="tilt-card cursor-pointer group">
+                    <div class="bg-toon-yellow h-48 rounded-2xl border-4 border-black shadow-neo flex items-center justify-center overflow-hidden relative">
+                        <i class="fa-solid fa-glasses text-6xl text-white opacity-80 group-hover:scale-110 transition duration-300"></i>
+                    </div>
+                    <h3 class="text-center font-bold text-xl mt-4">Accessories</h3>
+                </div>
+                <!-- Cat 4 -->
+                <div class="tilt-card cursor-pointer group">
+                    <div class="bg-toon-green h-48 rounded-2xl border-4 border-black shadow-neo flex items-center justify-center overflow-hidden relative">
+                        <i class="fa-solid fa-rocket text-6xl text-white opacity-80 group-hover:scale-110 transition duration-300"></i>
+                    </div>
+                    <h3 class="text-center font-bold text-xl mt-4">Gadgets</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🛍 PRODUCT CAROUSEL -->
+    <section class="py-24 px-6 bg-toon-yellow bg-opacity-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl font-heading font-bold mb-2">Fresh Drops</h2>
+                    <p class="font-bold text-gray-500">Stuff you probably don't need but want.</p>
+                </div>
+                <a href="#" class="font-bold border-b-4 border-black pb-1 hover:text-toon-red transition">See All -></a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-3xl border-4 border-black p-4 shadow-neo tilt-card relative">
+                    <span class="absolute top-4 left-4 bg-toon-red text-white text-xs font-bold px-3 py-1 rounded-full border-2 border-black z-10">SALE</span>
+                    <div class="h-64 bg-gray-100 rounded-2xl border-2 border-black mb-4 overflow-hidden flex items-center justify-center">
+                        <img src="https://placehold.co/400x400/orange/white?text=Cartoon+Sneaker" class="object-cover w-full h-full">
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl">Rocket Boots</h3>
+                    <p class="text-gray-500 font-bold text-sm mb-4">Space Grey Edition</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-black">$129</span>
+                        <button class="bg-black text-white px-4 py-2 rounded-lg border-2 border-black font-bold hover:bg-toon-blue hover:border-toon-blue transition">
+                            Add +
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-3xl border-4 border-black p-4 shadow-neo tilt-card relative">
+                    <span class="absolute top-4 left-4 bg-toon-green text-white text-xs font-bold px-3 py-1 rounded-full border-2 border-black z-10">NEW</span>
+                    <div class="h-64 bg-gray-100 rounded-2xl border-2 border-black mb-4 overflow-hidden flex items-center justify-center">
+                         <img src="https://placehold.co/400x400/cyan/white?text=Invis+Cloak" class="object-cover w-full h-full">
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl">Invisibility Cloak</h3>
+                    <p class="text-gray-500 font-bold text-sm mb-4">100% Transparency</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-black">$999</span>
+                        <button class="bg-black text-white px-4 py-2 rounded-lg border-2 border-black font-bold hover:bg-toon-blue hover:border-toon-blue transition">
+                            Add +
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-3xl border-4 border-black p-4 shadow-neo tilt-card relative">
+                    <div class="h-64 bg-gray-100 rounded-2xl border-2 border-black mb-4 overflow-hidden flex items-center justify-center">
+                         <img src="https://placehold.co/400x400/pink/white?text=Gravity+Gun" class="object-cover w-full h-full">
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl">Gravity Gun</h3>
+                    <p class="text-gray-500 font-bold text-sm mb-4">Physics not included</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-black">$450</span>
+                        <button class="bg-black text-white px-4 py-2 rounded-lg border-2 border-black font-bold hover:bg-toon-blue hover:border-toon-blue transition">
+                            Add +
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📩 NEWSLETTER -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto bg-toon-dark rounded-3xl border-4 border-black shadow-neo p-10 text-center relative overflow-hidden">
+             <div class="absolute top-0 left-0 w-full h-full opacity-10" style="background-image: radial-gradient(white 2px, transparent 2px); background-size: 20px 20px;"></div>
+             
+             <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-6 relative z-10">
+                 Don't Miss the Fun! 💌
+             </h2>
+             <p class="text-gray-300 mb-8 relative z-10">Join the club for exclusive discounts and free stickers.</p>
+             
+             <div class="flex flex-col md:flex-row gap-4 justify-center relative z-10">
+                 <input type="email" placeholder="Your email here..." class="px-6 py-3 rounded-xl border-4 border-black font-bold outline-none focus:ring-4 ring-toon-blue">
+                 <button class="bg-toon-yellow px-8 py-3 rounded-xl border-4 border-black font-bold shadow-neo hover:bg-white transition">
+                     Subscribe
+                 </button>
+             </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-10 text-center border-t-8 border-toon-blue">
+        <p class="font-heading font-bold text-2xl mb-4">TOONSTORE</p>
+        <p class="text-gray-500">© 2024 Cartoon Commerce. All rights reserved.</p>
+    </footer>
+
+    <!-- LOADER SCRIPT -->
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1500); // 1.5s delay to show off animation
+        });
+    </script>
+</body>
+</html>
